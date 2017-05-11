@@ -6,8 +6,8 @@ A Node.js Script for pulling random images from unplash.com and applying them to
 ## Installation
 [You do need a developer ID from unsplash.](https://unsplash.com/developers) - simply register for developer account, create a new project.<br> <strong>copy project id to use for --key </strong>
 ```
-$ git clone
-$ cd app_dir
+$ git clone https://github.com/jackel27/Jackpaper.git
+$ cd Jackpaper
 $ npm install
 ```
 
