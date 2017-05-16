@@ -1,0 +1,111 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.9
+3 info using node@v7.2.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\2017\\jackpaper',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\David\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle jackpaper@1.0.2~prepublish: jackpaper@1.0.2
+11 silly lifecycle jackpaper@1.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\David\\AppData\\Roaming\\npm-cache\\jackpaper\\1.0.2\\package.tgz',
+12 verbose tar pack   'C:\\2017\\jackpaper' ]
+13 verbose tarball C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package.tgz
+14 verbose folder C:\2017\jackpaper
+15 verbose addLocalTarball adding from inside cache C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package.tgz
+16 verbose correctMkdir C:\Users\David\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd jackpaper@1.0.2
+18 verbose afterAdd C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\David\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package\package.json written
+21 silly publish { name: 'jackpaper',
+21 silly publish   version: '1.0.2',
+21 silly publish   bin: { jackpaper: 'wallpaper.js' },
+21 silly publish   description: 'Random Unsplash Wallpaper Changer',
+21 silly publish   author: { name: 'JackeL', email: 'it.davidkaiser@gmail.com' },
+21 silly publish   private: false,
+21 silly publish   dependencies:
+21 silly publish    { chalk: '^1.1.3',
+21 silly publish      'commander-plus': '0.0.6',
+21 silly publish      'node-schedule': '^1.2.1',
+21 silly publish      request: '^2.81.0',
+21 silly publish      wallpaper: '^2.4.0' },
+21 silly publish   devDependencies: {},
+21 silly publish   engines: { node: '>= 4.0.0', npm: '>= 3.0.0' },
+21 silly publish   readme: '\r\n# Jackpaper\r\n\r\nA Node.js Script for pulling random images from unplash.com and applying them to your desktop wallpaper every two minutes.\r\n\r\n## Installation\r\n[You do need a developer ID from unsplash.](https://unsplash.com/developers) - simply register for developer account, create a new project.<br> <strong>copy project id to use for --key </strong>\r\n```\r\n$ git clone https://github.com/jackel27/Jackpaper.git\r\n$ cd Jackpaper\r\n$ npm install\r\n```\r\n\r\n\r\n## Usage\r\n```\r\nmake sure you are in project root...\r\n\r\n$ node wallpaper.js --help\r\n$ node wallpaper.js -q "QUERY HERE - OPTIONAL" --key "YOUR UNPLASH DEVELOPER PROJECT ID -REQUIRED"\r\n```\r\nor use forever...\r\n```\r\n$ forever start wallpaper --key "YOUR DEV ID" -q "QUERY"\r\n```\r\nto force change...\r\n```\r\n$ node wallpaper.js --force --key "YOUR DEV ID"\r\n```\r\n',
+21 silly publish   readmeFilename: 'README.MD',
+21 silly publish   gitHead: 'c82c50bf2a2acd9f4bfbcfcb1ef8c351620ef00c',
+21 silly publish   _id: 'jackpaper@1.0.2',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: '1d3abb41de2160553c9cf863e4c03f7cf1efab0b',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name jackpaper
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'jackpaper',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'jackpaper',
+26 silly mapToRegistry   name: 'jackpaper',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/jackpaper
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\David\AppData\Roaming\npm-cache\jackpaper\1.0.2\package.tgz
+30 verbose request uri https://registry.npmjs.org/jackpaper
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 11:06:59 PM
+33 verbose request using bearer token for auth
+34 verbose request id 8f9cd0c9bc59cb62
+35 http request PUT https://registry.npmjs.org/jackpaper
+36 http 403 https://registry.npmjs.org/jackpaper
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 16 May 2017 06:06:58 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-sea1051-SEA',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1494914818.935773,VS0,VE80',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating C:\Users\David\AppData\Roaming\npm-cache\registry.npmjs.org\jackpaper on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.2." : jackpaper
+40 verbose stack     at makeError (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\npm-registry-client\lib\request.js:290:14)
+40 verbose stack     at Request._callback (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+40 verbose stack     at Request.self.callback (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\request\request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\request\request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\Users\David\AppData\Roaming\nvm\v7.2.0\node_modules\npm\node_modules\request\request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid jackpaper
+43 verbose cwd C:\2017\jackpaper
+44 error Windows_NT 10.0.14393
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v7.2.0
+47 error npm  v3.10.9
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.2." : jackpaper
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
