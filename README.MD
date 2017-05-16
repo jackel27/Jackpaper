@@ -14,7 +14,7 @@ $ npm install jackpaper -g
 
 ## Usage
 ```
-Usage: wallpaper.js [options] [command]
+Usage: jackpaper [options] [command]
 
 Commands:
 
