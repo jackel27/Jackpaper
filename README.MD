@@ -1,50 +1,47 @@
 
-# Jackpaper
+# jackpaper
+ ```
+     _                  _      ____
+    | |   __ _    ___  | | __ |  _ \    __ _   _ __     ___   _ __
+ _  | |  / _` |  / __| | |/ / | |_) |  / _` | | '_ \   / _ \ | '__|
+| |_| | | (_| | | (__  |   <  |  __/  | (_| | | |_) | |  __/ | |
+ \___/   \__,_|  \___| |_|\_\ |_|      \__,_| | .__/   \___| |_|
+                                              |_|
 
-A Node.js Script for pulling random images from unplash.com and applying them to your desktop wallpaper every two minutes.
+
+```
+
+A Node.js Script for pulling random or category set images from unplash.com and applying them to your desktop wallpaper
 
 ### [View on GitHub](https://github.com/jackel27/Jackpaper)
 
 ## Installation
-[You do need a developer ID from unsplash.](https://unsplash.com/developers) - simply register for developer account, create a new project.<br> <strong>copy project id to use for --key </strong>
+[You do need a developer ID from unsplash.](https://unsplash.com/developers) - simply register for developer account, create a new project.<br>
 ```
 $ npm install jackpaper -g
-$ jackpaper
 ```
 
 
 ## Usage
 ```
-Usage: jackpaper [options]
+Usage: wallpaper.js [options] [command]
 
-  Options:
+Commands:
 
-    -h, --help       output usage information
-    -V, --version    output the version number
-    -s, --start      Start the Program with prompts to change background or simply just type "jackpaper"
-    -k, --key <key>  Specify Application ID
-    -q, --query      Filter with Query
-    -f, --force      Force one-time immediate change without delay
+  change                 Change Background Randomly
+  key                    Set your UnSplash Developer ID
+  change [string]        Will change to a random image within a category specified by the string
 
-  Examples:
+Options:
 
-    $ jackpaper
-    $ jackpaper --start
-    $ jackpaper --help
-    $ jackpaper -k "123218df8291" -q "animals"
-    $ jackpaper -k "123218df8291" -f
-    $ forever start jackpaper -k "123218df8291"
-    $ forever start jackpaper -k "123218df8291" --query "nature landscape"
-```
-or use forever...
-```
-$ forever start jackpaper --key "YOUR DEV ID" -q "QUERY"
-```
-to force change...
-```
-$ jackpaper --force --key "YOUR DEV ID"
-```
-Or use the wizard...
-```
-$ jackpaper
+  -h, --help  output usage information
+
+
+Examples:
+
+  $ jackpaper key
+  $ jackpaper change
+  $ jackpaper change galaxy
+
+
 ```

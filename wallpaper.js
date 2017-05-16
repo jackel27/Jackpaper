@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const commander = require('commander-plus')
 const wallpaper = require('wallpaper')
-const schedule = require('node-schedule')
 const chalk = require('chalk')
 const request = require('request')
 const path = require('path')
@@ -10,105 +9,101 @@ const http = require('http')
 const url = require('url')
 const home = require('os').homedir()
 const mkpath = require('mkpath')
+const del = require('del')
+const figlet = require('figlet')
+const clear = require('clear')
 
 let HOST = 'https://api.unsplash.com/'
-let rule = new schedule.RecurrenceRule()
-let help = false
-let userkey = false
-let force = false
-let query = ''
-let clientId = {
-  key:''
-}
-let start = false
-let args = false
+let lastarg = '2 '
+let clientkey = ''
+let change = false
+const errorHandle = /errors\"\:\["(.*)"]}/g
 
-// commander help
+console.log(
+  chalk.blue(
+    figlet.textSync('JackPaper', { horizontalLayout: 'full' })
+  )
+)
 
-function applyImage () {
-  getPhotos('random', query, (error, photos, link) => {
-    if (!error) {
-      download(photos.urls.full, './assets/image.jpg').then(() => {
-        process.exit()
-      })
-    } else {
-      console.log('error = ', error)
-      console.log(chalk.bold.red('Either you have an invalid key, no results from query, or you have exceeded your quota.'))
+commander
+.version('1.1.0')
+.command('change')
+.description('Change Background')
+.action((q) => {
+  if (typeof(q) !== 'object') {
+    applyImage(q)
+  } else {
+    applyImage()
+  }
+})
+
+commander
+.command('key')
+.description('Set your UnSplash Developer ID')
+.action((key) => {
+  setKey()
+})
+
+commander.on('--help', () => {
+  console.log('  ')
+  console.log('  Examples:')
+  console.log('  ')
+  console.log('    $ jackpaper key')
+  console.log('    $ jackpaper change')
+  console.log('    $ jackpaper change galaxy')
+  console.log('')
+});
+commander.parse(process.argv)
+
+function setKey() {
+  commander.prompt('Unsplash Application ID: ', (key) => {
+    clientkey = key
+    mkpath.sync(path.join(home, '/.jackpaper'))
+    const keypath = path.join(home, '/.jackpaper/key.txt')
+    fs.writeFile(keypath, key, (err) => {
+      if (err) throw err
+      clear()
+      console.log(chalk.bold.blue('\n Key Saved!', keypath))
       process.exit()
+    })
+  })
+}
+
+function applyImage (query) {
+  fs.readFile(path.join(home, '/.jackpaper/key.txt'), "utf8", function read(err, data) {
+    if (err) {
+      console.log(chalk.bold.red('You need to set your key first!'))
+      setKey()
+    } else {
+      clientkey = data
+      getPhotos('random', query, (error, photos, link) => {
+        if (!error) {
+          download(photos.urls.full, './assets/image.jpg').then(() => {
+            process.exit()
+          })
+        } else {
+          let err = error.toString()
+          let m = errorHandle.exec(err)
+          if (m[1] == "OAuth error: The access token is invalid") {
+            console.log(chalk.bold.red('Your Key is Not Valid! Please Run this Command: ', chalk.bold.green('$ jackpaper key')))
+          } else {
+            console.log(m[1])
+          }
+          process.exit()
+        }
+      })
     }
   })
 }
 
-function promptQuery () {
-  if (clientId) {
-    userkey = true
-    commander.prompt('query: ', (q) => {
-      query = q
-      applyImage()
-    })
-  } else {
-    console.log('Key not valid... exiting')
-  }
-}
-
-commander
-  .version('1.0.2')
-  .option('-s, --start', 'Start the Program with prompts to change background or simply just type "jackpaper"')
-  .option('-k, --key <key>', 'Specify Application ID', (val) => {
-    clientId.key = val
-    args = true
-  })
-  .option('-q, --query', 'Filter with Query', (val) => {
-    query = val
-    args = true
-  })
-  .option('-f, --force', 'Force one-time immediate change without delay')
-  commander.on('--help', () => {
-    args = true
-    console.log( chalk.bold.yellow('  Examples:'))
-    console.log('');
-    console.log( chalk.bold.green('    $ jackpaper'))
-    console.log( chalk.bold.green('    $ jackpaper --start'))
-    console.log( chalk.bold.green('    $ jackpaper --help'))
-    console.log( chalk.bold.green('    $ jackpaper -k "123218df8291" -q "animals"'))
-    console.log( chalk.bold.green('    $ jackpaper -k "123218df8291" -f'))
-    console.log( chalk.bold.green('    $ forever start jackpaper -k "123218df8291"'))
-    console.log( chalk.bold.green('    $ forever start jackpaper -k "123218df8291" --query "nature landscape"'))
-    console.log('')
-  })
-  .parse(process.argv)
-if (commander.start || !args) {
-  args = true
-  start = true
-  commander.prompt('Unsplash Application ID: ', (key) => {
-    clientId.key = key
-    promptQuery()
-  })
-}
-if (commander.force) {
-  applyImage()
-  args = true
-}
-if (!commander.force) {
-  schedule.scheduleJob(rule, () => {
-    applyImage()
-  })
-}
-
-// every 2 minutes
-let minute = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58]
-rule.minute = minute
-function add (a, b) {
-  return a + b
-}
-
 function download (_href, _filepath) {
   return new Promise((resolve, reject) => {
+      del.sync([path.join(home,'/.jackpaper/*.jpg')], {force: true})
       const hrefStartsWithHttp = _href.indexOf('http') !== 0
       const href = hrefStartsWithHttp ? ('http://' + _href) : _href
       const parsedURL = url.parse(href)
-      const filepath = path.join(home,'/jackpaper/image.jpg') || parsedURL.pathname.split('/').join('_')
-      mkpath.sync(path.join(home, '/jackpaper'))
+      const filepath = path.join(home,'/.jackpaper/' + Date.now() + '.jpg') || parsedURL.pathname.split('/').join('_')
+      mkpath.sync(path.join(home, '/.jackpaper'))
       console.log('downloading', href, '...')
       http.get({
         host: parsedURL.host,
@@ -124,7 +119,7 @@ function download (_href, _filepath) {
             if (err) throw err
             console.log('saved', filepath)
             wallpaper.set(filepath).then(() => {
-              console.log('Wallpaper Set!')
+              console.log(chalk.bold.blue('Wallpaper Set!'))
               resolve()
             })
           })
@@ -134,6 +129,7 @@ function download (_href, _filepath) {
 }
 
 function getPhotos(page, query, callback) {
+
    let params = {}
 
    if (page != null)
@@ -148,7 +144,7 @@ function getPhotos(page, query, callback) {
       qs: params,
       headers: {
          'Content-type': 'application/json',
-         'Authorization': 'Client-ID ' + clientId.key
+         'Authorization': 'Client-ID ' + clientkey
       }
    },
    (err, res, body) => {
