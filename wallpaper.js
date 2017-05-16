@@ -8,6 +8,7 @@ const path = require('path')
 const fs = require('fs')
 const http = require('http')
 const url = require('url')
+const home = require('os').homedir()
 
 let HOST = 'https://api.unsplash.com/'
 let rule = new schedule.RecurrenceRule()
@@ -96,7 +97,7 @@ function download (_href, _filepath) {
       const hrefStartsWithHttp = _href.indexOf('http') !== 0
       const href = hrefStartsWithHttp ? ('http://' + _href) : _href
       const parsedURL = url.parse(href)
-      const filepath = _filepath || parsedURL.pathname.split('/').join('_')
+      const filepath = path.join(home,'/jackpaper/image.jpg') || parsedURL.pathname.split('/').join('_')
 
       console.log('downloading', href, '...')
       http.get({
@@ -112,7 +113,7 @@ function download (_href, _filepath) {
           fs.writeFile(filepath, buffer, (err) => {
             if (err) throw err
             console.log('saved', filepath)
-            wallpaper.set('./assets/image.jpg').then(() => {
+            wallpaper.set(filepath).then(() => {
               console.log('Wallpaper Set!')
               resolve()
             })
