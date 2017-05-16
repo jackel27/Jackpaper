@@ -1,0 +1,279 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'uninstall',
+1 verbose cli   'image-watermark',
+1 verbose cli   '--save' ]
+2 info using npm@3.10.9
+3 info using node@v7.2.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly uninstall loadAllDepsIntoIdealtree
+19 silly loadAllDepsIntoIdealTree Finishing
+20 silly loadIdealTree Finishing
+21 silly currentTree jackpaper@1.1.2
+21 silly currentTree +-- ajv@4.11.8
+21 silly currentTree +-- ansi-regex@2.1.1
+21 silly currentTree +-- ansi-styles@2.2.1
+21 silly currentTree +-- array-union@1.0.2
+21 silly currentTree +-- array-uniq@1.0.3
+21 silly currentTree +-- arrify@1.0.1
+21 silly currentTree +-- asn1@0.2.3
+21 silly currentTree +-- assert-plus@0.2.0
+21 silly currentTree +-- asynckit@0.4.0
+21 silly currentTree +-- aws-sign2@0.6.0
+21 silly currentTree +-- aws4@1.6.0
+21 silly currentTree +-- balanced-match@0.4.2
+21 silly currentTree +-- bcrypt-pbkdf@1.0.1
+21 silly currentTree +-- boom@2.10.1
+21 silly currentTree +-- brace-expansion@1.1.7
+21 silly currentTree +-- caseless@0.12.0
+21 silly currentTree +-- chalk@1.1.3
+21 silly currentTree +-- clear@0.0.1
+21 silly currentTree +-- co@4.6.0
+21 silly currentTree +-- combined-stream@1.0.5
+21 silly currentTree +-- commander-plus@0.0.6
+21 silly currentTree +-- concat-map@0.0.1
+21 silly currentTree +-- cryptiles@2.0.5
+21 silly currentTree +-- dashdash@1.14.1
+21 silly currentTree | `-- assert-plus@1.0.0
+21 silly currentTree +-- del@2.2.2
+21 silly currentTree +-- delayed-stream@1.0.0
+21 silly currentTree +-- ecc-jsbn@0.1.1
+21 silly currentTree +-- escape-string-regexp@1.0.5
+21 silly currentTree +-- extend@3.0.1
+21 silly currentTree +-- extsprintf@1.0.2
+21 silly currentTree +-- figlet@1.2.0
+21 silly currentTree +-- forever-agent@0.6.1
+21 silly currentTree +-- form-data@2.1.4
+21 silly currentTree +-- fs.realpath@1.0.0
+21 silly currentTree +-- getpass@0.1.7
+21 silly currentTree | `-- assert-plus@1.0.0
+21 silly currentTree +-- glob@7.1.1
+21 silly currentTree +-- globby@5.0.0
+21 silly currentTree +-- har-schema@1.0.5
+21 silly currentTree +-- har-validator@4.2.1
+21 silly currentTree +-- has-ansi@2.0.0
+21 silly currentTree +-- hawk@3.1.3
+21 silly currentTree +-- hoek@2.16.3
+21 silly currentTree +-- http-signature@1.1.1
+21 silly currentTree +-- image-watermark@0.0.7
+21 silly currentTree +-- inflight@1.0.6
+21 silly currentTree +-- inherits@2.0.3
+21 silly currentTree +-- is-path-cwd@1.0.0
+21 silly currentTree +-- is-path-in-cwd@1.0.0
+21 silly currentTree +-- is-path-inside@1.0.0
+21 silly currentTree +-- is-typedarray@1.0.0
+21 silly currentTree +-- isstream@0.1.2
+21 silly currentTree +-- jackelsplash-api@1.2.0
+21 silly currentTree +-- jodid25519@1.0.2
+21 silly currentTree +-- jsbn@0.1.1
+21 silly currentTree +-- json-schema@0.2.3
+21 silly currentTree +-- json-stable-stringify@1.0.1
+21 silly currentTree +-- json-stringify-safe@5.0.1
+21 silly currentTree +-- jsonify@0.0.0
+21 silly currentTree +-- jsprim@1.4.0
+21 silly currentTree | `-- assert-plus@1.0.0
+21 silly currentTree +-- keypress@0.1.0
+21 silly currentTree +-- mime-db@1.27.0
+21 silly currentTree +-- mime-types@2.1.15
+21 silly currentTree +-- minimatch@3.0.4
+21 silly currentTree +-- mkpath@1.0.0
+21 silly currentTree +-- node-ratify@1.0.5
+21 silly currentTree +-- oauth-sign@0.8.2
+21 silly currentTree +-- object-assign@4.1.1
+21 silly currentTree +-- once@1.4.0
+21 silly currentTree +-- path-is-absolute@1.0.1
+21 silly currentTree +-- path-is-inside@1.0.2
+21 silly currentTree +-- path@0.11.14
+21 silly currentTree +-- performance-now@0.2.0
+21 silly currentTree +-- pify@2.3.0
+21 silly currentTree +-- pinkie-promise@2.0.1
+21 silly currentTree +-- pinkie@2.0.4
+21 silly currentTree +-- punycode@1.4.1
+21 silly currentTree +-- qs@6.4.0
+21 silly currentTree +-- request@2.81.0
+21 silly currentTree +-- rimraf@2.6.1
+21 silly currentTree +-- safe-buffer@5.0.1
+21 silly currentTree +-- sntp@1.0.9
+21 silly currentTree +-- sshpk@1.13.0
+21 silly currentTree | `-- assert-plus@1.0.0
+21 silly currentTree +-- stringstream@0.0.5
+21 silly currentTree +-- strip-ansi@3.0.1
+21 silly currentTree +-- supports-color@2.0.0
+21 silly currentTree +-- tough-cookie@2.3.2
+21 silly currentTree +-- tunnel-agent@0.6.0
+21 silly currentTree +-- tweetnacl@0.14.5
+21 silly currentTree +-- uuid@3.0.1
+21 silly currentTree +-- verror@1.3.6
+21 silly currentTree +-- wallpaper@2.4.0
+21 silly currentTree `-- wrappy@1.0.2
+22 silly idealTree jackpaper@1.1.2
+22 silly idealTree +-- ajv@4.11.8
+22 silly idealTree +-- ansi-regex@2.1.1
+22 silly idealTree +-- ansi-styles@2.2.1
+22 silly idealTree +-- array-union@1.0.2
+22 silly idealTree +-- array-uniq@1.0.3
+22 silly idealTree +-- arrify@1.0.1
+22 silly idealTree +-- asn1@0.2.3
+22 silly idealTree +-- assert-plus@0.2.0
+22 silly idealTree +-- asynckit@0.4.0
+22 silly idealTree +-- aws-sign2@0.6.0
+22 silly idealTree +-- aws4@1.6.0
+22 silly idealTree +-- balanced-match@0.4.2
+22 silly idealTree +-- bcrypt-pbkdf@1.0.1
+22 silly idealTree +-- boom@2.10.1
+22 silly idealTree +-- brace-expansion@1.1.7
+22 silly idealTree +-- caseless@0.12.0
+22 silly idealTree +-- chalk@1.1.3
+22 silly idealTree +-- clear@0.0.1
+22 silly idealTree +-- co@4.6.0
+22 silly idealTree +-- combined-stream@1.0.5
+22 silly idealTree +-- commander-plus@0.0.6
+22 silly idealTree +-- concat-map@0.0.1
+22 silly idealTree +-- cryptiles@2.0.5
+22 silly idealTree +-- dashdash@1.14.1
+22 silly idealTree | `-- assert-plus@1.0.0
+22 silly idealTree +-- del@2.2.2
+22 silly idealTree +-- delayed-stream@1.0.0
+22 silly idealTree +-- ecc-jsbn@0.1.1
+22 silly idealTree +-- escape-string-regexp@1.0.5
+22 silly idealTree +-- extend@3.0.1
+22 silly idealTree +-- extsprintf@1.0.2
+22 silly idealTree +-- figlet@1.2.0
+22 silly idealTree +-- forever-agent@0.6.1
+22 silly idealTree +-- form-data@2.1.4
+22 silly idealTree +-- fs.realpath@1.0.0
+22 silly idealTree +-- getpass@0.1.7
+22 silly idealTree | `-- assert-plus@1.0.0
+22 silly idealTree +-- glob@7.1.1
+22 silly idealTree +-- globby@5.0.0
+22 silly idealTree +-- har-schema@1.0.5
+22 silly idealTree +-- har-validator@4.2.1
+22 silly idealTree +-- has-ansi@2.0.0
+22 silly idealTree +-- hawk@3.1.3
+22 silly idealTree +-- hoek@2.16.3
+22 silly idealTree +-- http-signature@1.1.1
+22 silly idealTree +-- inflight@1.0.6
+22 silly idealTree +-- inherits@2.0.3
+22 silly idealTree +-- is-path-cwd@1.0.0
+22 silly idealTree +-- is-path-in-cwd@1.0.0
+22 silly idealTree +-- is-path-inside@1.0.0
+22 silly idealTree +-- is-typedarray@1.0.0
+22 silly idealTree +-- isstream@0.1.2
+22 silly idealTree +-- jackelsplash-api@1.2.0
+22 silly idealTree +-- jodid25519@1.0.2
+22 silly idealTree +-- jsbn@0.1.1
+22 silly idealTree +-- json-schema@0.2.3
+22 silly idealTree +-- json-stable-stringify@1.0.1
+22 silly idealTree +-- json-stringify-safe@5.0.1
+22 silly idealTree +-- jsonify@0.0.0
+22 silly idealTree +-- jsprim@1.4.0
+22 silly idealTree | `-- assert-plus@1.0.0
+22 silly idealTree +-- keypress@0.1.0
+22 silly idealTree +-- mime-db@1.27.0
+22 silly idealTree +-- mime-types@2.1.15
+22 silly idealTree +-- minimatch@3.0.4
+22 silly idealTree +-- mkpath@1.0.0
+22 silly idealTree +-- oauth-sign@0.8.2
+22 silly idealTree +-- object-assign@4.1.1
+22 silly idealTree +-- once@1.4.0
+22 silly idealTree +-- path-is-absolute@1.0.1
+22 silly idealTree +-- path-is-inside@1.0.2
+22 silly idealTree +-- path@0.11.14
+22 silly idealTree +-- performance-now@0.2.0
+22 silly idealTree +-- pify@2.3.0
+22 silly idealTree +-- pinkie-promise@2.0.1
+22 silly idealTree +-- pinkie@2.0.4
+22 silly idealTree +-- punycode@1.4.1
+22 silly idealTree +-- qs@6.4.0
+22 silly idealTree +-- request@2.81.0
+22 silly idealTree +-- rimraf@2.6.1
+22 silly idealTree +-- safe-buffer@5.0.1
+22 silly idealTree +-- sntp@1.0.9
+22 silly idealTree +-- sshpk@1.13.0
+22 silly idealTree | `-- assert-plus@1.0.0
+22 silly idealTree +-- stringstream@0.0.5
+22 silly idealTree +-- strip-ansi@3.0.1
+22 silly idealTree +-- supports-color@2.0.0
+22 silly idealTree +-- tough-cookie@2.3.2
+22 silly idealTree +-- tunnel-agent@0.6.0
+22 silly idealTree +-- tweetnacl@0.14.5
+22 silly idealTree +-- uuid@3.0.1
+22 silly idealTree +-- verror@1.3.6
+22 silly idealTree +-- wallpaper@2.4.0
+22 silly idealTree `-- wrappy@1.0.2
+23 silly generateActionsToTake Starting
+24 silly install generateActionsToTake
+25 silly generateActionsToTake Finishing
+26 silly diffTrees action count 2
+27 silly diffTrees remove node-ratify@1.0.5
+28 silly diffTrees remove image-watermark@0.0.7
+29 silly decomposeActions action count 2
+30 silly decomposeActions remove node-ratify@1.0.5
+31 silly decomposeActions remove image-watermark@0.0.7
+32 silly runTopLevelLifecycles Starting
+33 silly executeActions Starting
+34 silly install executeActions
+35 silly doSerial global-install 0
+36 silly doParallel fetch 0
+37 verbose correctMkdir C:\Users\David\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+38 verbose lock using C:\Users\David\AppData\Roaming\npm-cache\_locks\staging-9736c82824c17f16.lock for C:\2017\jackpaper\node_modules\.staging
+39 silly doParallel extract 0
+40 silly doParallel preinstall 0
+41 silly doReverseSerial remove 2
+42 silly remove C:\2017\jackpaper\node_modules\image-watermark
+43 verbose unbuild node_modules\image-watermark
+44 info lifecycle image-watermark@0.0.7~preuninstall: image-watermark@0.0.7
+45 silly lifecycle image-watermark@0.0.7~preuninstall: no script for preuninstall, continuing
+46 info lifecycle image-watermark@0.0.7~uninstall: image-watermark@0.0.7
+47 silly lifecycle image-watermark@0.0.7~uninstall: no script for uninstall, continuing
+48 verbose unbuild rmStuff image-watermark@0.0.7 from C:\2017\jackpaper\node_modules
+49 info lifecycle image-watermark@0.0.7~postuninstall: image-watermark@0.0.7
+50 silly lifecycle image-watermark@0.0.7~postuninstall: no script for postuninstall, continuing
+51 silly gentlyRm C:\2017\jackpaper\node_modules\image-watermark is being purged from base C:\2017\jackpaper
+52 verbose gentlyRm don't care about contents; nuking C:\2017\jackpaper\node_modules\image-watermark
+53 silly vacuum-fs purging C:\2017\jackpaper\node_modules\image-watermark
+54 silly vacuum-fs quitting because other entries in C:\2017\jackpaper\node_modules
+55 verbose unlock done using C:\Users\David\AppData\Roaming\npm-cache\_locks\staging-9736c82824c17f16.lock for C:\2017\jackpaper\node_modules\.staging
+56 silly rollbackFailedOptional Starting
+57 silly rollbackFailedOptional Finishing
+58 silly runTopLevelLifecycles Finishing
+59 silly install printInstalled
+60 warn jackpaper@1.1.2 No repository field.
+61 verbose If you need help, you may report this error at:
+61 verbose     <https://github.com/npm/npm/issues>
+62 warn jackpaper@1.1.2 No license field.
+63 verbose If you need help, you may report this error at:
+63 verbose     <https://github.com/npm/npm/issues>
+64 verbose stack Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
+65 verbose cwd C:\2017\jackpaper
+66 error Windows_NT 10.0.14393
+67 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "uninstall" "image-watermark" "--save"
+68 error node v7.2.0
+69 error npm  v3.10.9
+70 error path C:\2017\jackpaper\node_modules\image-watermark
+71 error code EPERM
+72 error errno -4048
+73 error syscall unlink
+74 error Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
+74 error  { Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
+74 error   errno: -4048,
+74 error   code: 'EPERM',
+74 error   syscall: 'unlink',
+74 error   path: 'C:\\2017\\jackpaper\\node_modules\\image-watermark',
+74 error   parent: 'jackpaper' }
+75 error Please try running this command again as root/Administrator.
+76 verbose exit [ -4048, true ]

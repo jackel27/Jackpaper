@@ -17,6 +17,10 @@ let HOST = 'https://api.unsplash.com/'
 let lastarg = '2 '
 let clientkey = ''
 let change = false
+let imageInfo = {
+  user: '',
+  url: ''
+}
 const errorHandle = /errors\"\:\["(.*)"]}/g
 
 console.log(
@@ -115,11 +119,18 @@ function download (_href, _filepath) {
         })
         res.on('end', () => {
           const buffer = Buffer.concat(chunks)
+
           fs.writeFile(filepath, buffer, (err) => {
             if (err) throw err
             console.log('saved', filepath)
             wallpaper.set(filepath).then(() => {
-              console.log(chalk.bold.blue('Wallpaper Set!'))
+              clear()
+              console.log(
+                chalk.yellow(
+                  figlet.textSync('Unsplash', { horizontalLayout: 'full' })
+                )
+              )
+              console.log('\nPhoto By: ', chalk.bold.red(imageInfo.user), '\nUrl: ', chalk.bold.red(imageInfo.url))
               resolve()
             })
           })
@@ -148,6 +159,9 @@ function getPhotos(page, query, callback) {
       }
    },
    (err, res, body) => {
+     let json = JSON.parse(body)
+     imageInfo.user = json.user.name
+     imageInfo.url = json.links.html
       if (err) return callback(err)
       if (res.statusCode !== 200) return callback(new Error(body), null)
       return callback(null, JSON.parse(body), res.headers.link)
