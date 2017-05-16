@@ -23,7 +23,7 @@
 18 silly uninstall loadAllDepsIntoIdealtree
 19 silly loadAllDepsIntoIdealTree Finishing
 20 silly loadIdealTree Finishing
-21 silly currentTree jackpaper@1.1.2
+21 silly currentTree jackpaper@1.1.3
 21 silly currentTree +-- ajv@4.11.8
 21 silly currentTree +-- ansi-regex@2.1.1
 21 silly currentTree +-- ansi-styles@2.2.1
@@ -69,7 +69,7 @@
 21 silly currentTree +-- hawk@3.1.3
 21 silly currentTree +-- hoek@2.16.3
 21 silly currentTree +-- http-signature@1.1.1
-21 silly currentTree +-- image-watermark@0.0.7
+21 silly currentTree +-- image-watermark
 21 silly currentTree +-- inflight@1.0.6
 21 silly currentTree +-- inherits@2.0.3
 21 silly currentTree +-- is-path-cwd@1.0.0
@@ -120,7 +120,7 @@
 21 silly currentTree +-- verror@1.3.6
 21 silly currentTree +-- wallpaper@2.4.0
 21 silly currentTree `-- wrappy@1.0.2
-22 silly idealTree jackpaper@1.1.2
+22 silly idealTree jackpaper@1.1.3
 22 silly idealTree +-- ajv@4.11.8
 22 silly idealTree +-- ansi-regex@2.1.1
 22 silly idealTree +-- ansi-styles@2.2.1
@@ -187,6 +187,7 @@
 22 silly idealTree +-- mime-types@2.1.15
 22 silly idealTree +-- minimatch@3.0.4
 22 silly idealTree +-- mkpath@1.0.0
+22 silly idealTree +-- node-ratify@1.0.5
 22 silly idealTree +-- oauth-sign@0.8.2
 22 silly idealTree +-- object-assign@4.1.1
 22 silly idealTree +-- once@1.4.0
@@ -217,63 +218,32 @@
 22 silly idealTree `-- wrappy@1.0.2
 23 silly generateActionsToTake Starting
 24 silly install generateActionsToTake
-25 silly generateActionsToTake Finishing
-26 silly diffTrees action count 2
-27 silly diffTrees remove node-ratify@1.0.5
-28 silly diffTrees remove image-watermark@0.0.7
-29 silly decomposeActions action count 2
-30 silly decomposeActions remove node-ratify@1.0.5
-31 silly decomposeActions remove image-watermark@0.0.7
-32 silly runTopLevelLifecycles Starting
-33 silly executeActions Starting
-34 silly install executeActions
-35 silly doSerial global-install 0
-36 silly doParallel fetch 0
-37 verbose correctMkdir C:\Users\David\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
-38 verbose lock using C:\Users\David\AppData\Roaming\npm-cache\_locks\staging-9736c82824c17f16.lock for C:\2017\jackpaper\node_modules\.staging
-39 silly doParallel extract 0
-40 silly doParallel preinstall 0
-41 silly doReverseSerial remove 2
-42 silly remove C:\2017\jackpaper\node_modules\image-watermark
-43 verbose unbuild node_modules\image-watermark
-44 info lifecycle image-watermark@0.0.7~preuninstall: image-watermark@0.0.7
-45 silly lifecycle image-watermark@0.0.7~preuninstall: no script for preuninstall, continuing
-46 info lifecycle image-watermark@0.0.7~uninstall: image-watermark@0.0.7
-47 silly lifecycle image-watermark@0.0.7~uninstall: no script for uninstall, continuing
-48 verbose unbuild rmStuff image-watermark@0.0.7 from C:\2017\jackpaper\node_modules
-49 info lifecycle image-watermark@0.0.7~postuninstall: image-watermark@0.0.7
-50 silly lifecycle image-watermark@0.0.7~postuninstall: no script for postuninstall, continuing
-51 silly gentlyRm C:\2017\jackpaper\node_modules\image-watermark is being purged from base C:\2017\jackpaper
-52 verbose gentlyRm don't care about contents; nuking C:\2017\jackpaper\node_modules\image-watermark
-53 silly vacuum-fs purging C:\2017\jackpaper\node_modules\image-watermark
-54 silly vacuum-fs quitting because other entries in C:\2017\jackpaper\node_modules
-55 verbose unlock done using C:\Users\David\AppData\Roaming\npm-cache\_locks\staging-9736c82824c17f16.lock for C:\2017\jackpaper\node_modules\.staging
-56 silly rollbackFailedOptional Starting
-57 silly rollbackFailedOptional Finishing
-58 silly runTopLevelLifecycles Finishing
-59 silly install printInstalled
-60 warn jackpaper@1.1.2 No repository field.
-61 verbose If you need help, you may report this error at:
-61 verbose     <https://github.com/npm/npm/issues>
-62 warn jackpaper@1.1.2 No license field.
-63 verbose If you need help, you may report this error at:
-63 verbose     <https://github.com/npm/npm/issues>
-64 verbose stack Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
-65 verbose cwd C:\2017\jackpaper
-66 error Windows_NT 10.0.14393
-67 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "uninstall" "image-watermark" "--save"
-68 error node v7.2.0
-69 error npm  v3.10.9
-70 error path C:\2017\jackpaper\node_modules\image-watermark
-71 error code EPERM
-72 error errno -4048
-73 error syscall unlink
-74 error Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
-74 error  { Error: EPERM: operation not permitted, unlink 'C:\2017\jackpaper\node_modules\image-watermark'
-74 error   errno: -4048,
-74 error   code: 'EPERM',
-74 error   syscall: 'unlink',
-74 error   path: 'C:\\2017\\jackpaper\\node_modules\\image-watermark',
-74 error   parent: 'jackpaper' }
-75 error Please try running this command again as root/Administrator.
-76 verbose exit [ -4048, true ]
+25 warn checkPermissions Missing write access to C:\2017\jackpaper\node_modules\image-watermark
+26 silly rollbackFailedOptional Starting
+27 silly rollbackFailedOptional Finishing
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 warn jackpaper@1.1.3 No repository field.
+31 verbose If you need help, you may report this error at:
+31 verbose     <https://github.com/npm/npm/issues>
+32 warn jackpaper@1.1.3 No license field.
+33 verbose If you need help, you may report this error at:
+33 verbose     <https://github.com/npm/npm/issues>
+34 verbose stack Error: EPERM: operation not permitted, access 'C:\2017\jackpaper\node_modules\image-watermark'
+35 verbose cwd C:\2017\jackpaper
+36 error Windows_NT 10.0.14393
+37 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "uninstall" "image-watermark" "--save"
+38 error node v7.2.0
+39 error npm  v3.10.9
+40 error path C:\2017\jackpaper\node_modules\image-watermark
+41 error code EPERM
+42 error errno -4048
+43 error syscall access
+44 error Error: EPERM: operation not permitted, access 'C:\2017\jackpaper\node_modules\image-watermark'
+44 error  { Error: EPERM: operation not permitted, access 'C:\2017\jackpaper\node_modules\image-watermark'
+44 error   errno: -4048,
+44 error   code: 'EPERM',
+44 error   syscall: 'access',
+44 error   path: 'C:\\2017\\jackpaper\\node_modules\\image-watermark' }
+45 error Please try running this command again as root/Administrator.
+46 verbose exit [ -4048, true ]
