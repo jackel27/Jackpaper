@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+const commander = require('commander-plus')
 const wallpaper = require('wallpaper')
 const schedule = require('node-schedule')
 const chalk = require('chalk')
@@ -16,72 +18,107 @@ let query = ''
 let clientId = {
   key:''
 }
-rule.minute = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58]
+let start = false
 
-process.argv.forEach((val, index) => {
-  if (val == '-q') {
-    query = process.argv[index + 1]
-  }
-  if (val == '--key') {
-    userkey = true
-    clientId.key = process.argv[index + 1]
-  }
-  if (val == '--force') {
-    force = true
-  }
-  if (val == '--help') {
-    help = true
-    console.log("\n", chalk.bold.green('example:', chalk.bold.white('node wallpaper.js -q ',chalk.bold.red('"search query"') + ' --key ', chalk.bold.red('"your unsplash dev id"'))))
-    console.log("\n", "\t", "\t", "\t", "\t", "Or")
-    console.log("\n", chalk.bold.green('example:', chalk.bold.white('forever start wallpaper.js -q ',chalk.bold.red('"search query"') + ' --key ', chalk.bold.red('"your unsplash dev id"'), "\n")))
-    console.log(chalk.bold.green("If you want to force an image without a time delay, just use "),chalk.bold.blue('Node wallpaper.js '), '--force --key ',chalk.bold.red('"your unsplash dev id"'))
-  }
-})
+// commander help
 
-
-if (!help && userkey) {
-  if (!force) {
-    schedule.scheduleJob(rule, () => {
-      // console.log('The answer to life, the universe, and everything!')
-      getPhotos('random', query, (error, photos, link) => {
-        download(photos.urls.full, './assets/image.jpg')
+function applyImage () {
+  getPhotos('random', query, (error, photos, link) => {
+    if (!error) {
+      download(photos.urls.full, './assets/image.jpg').then(() => {
+        process.exit()
       })
-    })
-  } else if (force) {
-    getPhotos('random', query, (error, photos, link) => {
-      download(photos.urls.full, './assets/image.jpg')
-    })
-  }
-} else if (!userkey && !help) {
-  console.log(chalk.bold.red('Cannot execute without specifying your unsplash dev id. example: node wallpaper.js --key \"YOUR KEY HERE\"'))
+    } else {
+      console.log('error = ', error)
+      console.log(chalk.bold.red('Either you have an invalid key, no results from query, or you have exceeded your quota.'))
+      process.exit()
+    }
+  })
 }
 
+function promptQuery () {
+  if (clientId) {
+    userkey = true
+    commander.prompt('query: ', (q) => {
+      query = q
+      applyImage()
+    })
+  } else {
+    console.log('Key not valid... exiting')
+  }
+}
+
+commander
+  .version('1.0.2')
+  .option('-s, --start', 'Start the Program with prompts to change background')
+  .option('-k, --key <key>', 'Specify Application ID', (val) => {
+    clientId.key = val
+  })
+  .option('-q, --query', 'Filter with Query', (val) => {
+    query = val
+  })
+  .option('-f, --force', 'Force one-time immediate change without delay')
+  commander.on('--help', () => {
+    console.log( chalk.bold.yellow('  Examples:'))
+    console.log('');
+    console.log( chalk.bold.green('    $ node wallpaper.js --start'))
+    console.log( chalk.bold.green('    $ node wallpaper.js --help'))
+    console.log( chalk.bold.green('    $ node wallpaper.js -k "123218df8291" -q "animals"'))
+    console.log( chalk.bold.green('    $ node wallpaper.js -k "123218df8291" -f'))
+    console.log( chalk.bold.green('    $ node forever start wallpaper.js -k "123218df8291"'))
+    console.log( chalk.bold.green('    $ node forever start wallpaper.js -k "123218df8291" --query "nature landscape"'))
+    console.log('')
+  })
+  .parse(process.argv)
+if (commander.start) {
+  start = true
+  commander.prompt('Unsplash Application ID: ', (key) => {
+    clientId.key = key
+    promptQuery()
+  })
+}
+if (commander.force) applyImage()
+if (!commander.force) {
+  schedule.scheduleJob(rule, () => {
+    applyImage()
+  })
+}
+
+// every 2 minutes
+let minute = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58]
+rule.minute = minute
+function add (a, b) {
+  return a + b
+}
 
 function download (_href, _filepath) {
-  const hrefStartsWithHttp = _href.indexOf('http') !== 0
-  const href = hrefStartsWithHttp ? ('http://' + _href) : _href
-  const parsedURL = url.parse(href)
-  const filepath = _filepath || parsedURL.pathname.split('/').join('_')
+  return new Promise((resolve, reject) => {
+      const hrefStartsWithHttp = _href.indexOf('http') !== 0
+      const href = hrefStartsWithHttp ? ('http://' + _href) : _href
+      const parsedURL = url.parse(href)
+      const filepath = _filepath || parsedURL.pathname.split('/').join('_')
 
-  console.log('downloading', href, '...')
-  http.get({
-    host: parsedURL.host,
-    path: parsedURL.pathname
-  }, (res) => {
-    let chunks = []
-    res.on('data', (chunk) => {
-      chunks.push(chunk)
-    })
-    res.on('end', () => {
-      const buffer = Buffer.concat(chunks)
-      fs.writeFile(filepath, buffer, (err) => {
-        if (err) throw err
-        console.log('saved', filepath)
-        wallpaper.set('./assets/image.jpg').then(() => {
-          console.log('Wallpaper Set!')
+      console.log('downloading', href, '...')
+      http.get({
+        host: parsedURL.host,
+        path: parsedURL.pathname
+      }, (res) => {
+        let chunks = []
+        res.on('data', (chunk) => {
+          chunks.push(chunk)
+        })
+        res.on('end', () => {
+          const buffer = Buffer.concat(chunks)
+          fs.writeFile(filepath, buffer, (err) => {
+            if (err) throw err
+            console.log('saved', filepath)
+            wallpaper.set('./assets/image.jpg').then(() => {
+              console.log('Wallpaper Set!')
+              resolve()
+            })
+          })
         })
       })
-    })
   })
 }
 
