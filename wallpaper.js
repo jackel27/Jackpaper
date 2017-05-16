@@ -9,6 +9,7 @@ const fs = require('fs')
 const http = require('http')
 const url = require('url')
 const home = require('os').homedir()
+const mkpath = require('mkpath')
 
 let HOST = 'https://api.unsplash.com/'
 let rule = new schedule.RecurrenceRule()
@@ -20,6 +21,7 @@ let clientId = {
   key:''
 }
 let start = false
+let args = false
 
 // commander help
 
@@ -51,34 +53,42 @@ function promptQuery () {
 
 commander
   .version('1.0.2')
-  .option('-s, --start', 'Start the Program with prompts to change background')
+  .option('-s, --start', 'Start the Program with prompts to change background or simply just type "jackpaper"')
   .option('-k, --key <key>', 'Specify Application ID', (val) => {
     clientId.key = val
+    args = true
   })
   .option('-q, --query', 'Filter with Query', (val) => {
     query = val
+    args = true
   })
   .option('-f, --force', 'Force one-time immediate change without delay')
   commander.on('--help', () => {
+    args = true
     console.log( chalk.bold.yellow('  Examples:'))
     console.log('');
-    console.log( chalk.bold.green('    $ node wallpaper.js --start'))
-    console.log( chalk.bold.green('    $ node wallpaper.js --help'))
-    console.log( chalk.bold.green('    $ node wallpaper.js -k "123218df8291" -q "animals"'))
-    console.log( chalk.bold.green('    $ node wallpaper.js -k "123218df8291" -f'))
-    console.log( chalk.bold.green('    $ node forever start wallpaper.js -k "123218df8291"'))
-    console.log( chalk.bold.green('    $ node forever start wallpaper.js -k "123218df8291" --query "nature landscape"'))
+    console.log( chalk.bold.green('    $ jackpaper'))
+    console.log( chalk.bold.green('    $ jackpaper --start'))
+    console.log( chalk.bold.green('    $ jackpaper --help'))
+    console.log( chalk.bold.green('    $ jackpaper -k "123218df8291" -q "animals"'))
+    console.log( chalk.bold.green('    $ jackpaper -k "123218df8291" -f'))
+    console.log( chalk.bold.green('    $ forever start jackpaper -k "123218df8291"'))
+    console.log( chalk.bold.green('    $ forever start jackpaper -k "123218df8291" --query "nature landscape"'))
     console.log('')
   })
   .parse(process.argv)
-if (commander.start) {
+if (commander.start || !args) {
+  args = true
   start = true
   commander.prompt('Unsplash Application ID: ', (key) => {
     clientId.key = key
     promptQuery()
   })
 }
-if (commander.force) applyImage()
+if (commander.force) {
+  applyImage()
+  args = true
+}
 if (!commander.force) {
   schedule.scheduleJob(rule, () => {
     applyImage()
@@ -98,7 +108,7 @@ function download (_href, _filepath) {
       const href = hrefStartsWithHttp ? ('http://' + _href) : _href
       const parsedURL = url.parse(href)
       const filepath = path.join(home,'/jackpaper/image.jpg') || parsedURL.pathname.split('/').join('_')
-
+      mkpath.sync(path.join(home, '/jackpaper'))
       console.log('downloading', href, '...')
       http.get({
         host: parsedURL.host,
