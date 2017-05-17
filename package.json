@@ -1,11 +1,12 @@
 {
   "name": "jackpaper",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "bin": {
     "jackpaper": "wallpaper.js"
   },
   "description": "Random Unsplash Wallpaper Changer",
   "author": "JackeL <it.davidkaiser@gmail.com>",
+  "repository": "jackel27/jackpaper",
   "private": false,
   "dependencies": {
     "chalk": "^1.1.3",
